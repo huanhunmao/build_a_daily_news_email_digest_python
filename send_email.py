@@ -2,16 +2,17 @@ import smtplib, ssl, os
 
 
 def send_email(message):
-    host = 'smtp.gmail.com'
+    host = 'smtp.163.com'
     port = 465
 
-    username = 'markfu1996@gmail.com'
+    username = 'xxx@163.com'
     # 和 js 不一样 不是单独 .env 文件 写在系统 环境变量中  open ~/.zshrc
-    password =  '应用专用密码'
+    password = 'xxx'
 
-    receiver = 'markfu1996@gmail.com'
+    receiver = 'xxx@163.com'
 
-    context = ssl.create_default_context()
+    ca_cert_path = "cacert.pem"
+    context = ssl.create_default_context(cafile=ca_cert_path)
 
     try:
         with smtplib.SMTP_SSL(host, port, context=context,

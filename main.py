@@ -62,6 +62,8 @@ body = ""
 for article in content['articles']:
     # 检查不是 None  不然会报错
     if article['title'] is not None:
-        body = body + article['title'] + '\n' + article['description'] + 2 * '\n'
+        body = body + article['title'] + '\n' + article['content'] + 2 * '\n'
 
+# UTF-8编码来确保字符串中的非ASCII字符能够正确地被处理
+body = body.encode('utf-8')
 send_email(message=body)

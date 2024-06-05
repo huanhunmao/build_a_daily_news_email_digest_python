@@ -21,6 +21,3 @@ def send_email(message):
             print("邮件发送成功！")
     except Exception as e:
         print(f"发送邮件时出错：{e}")
-
-
-send_email('pxpxpxpxppxp')

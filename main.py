@@ -1,13 +1,14 @@
 import requests
 # 注意 这个函数如何导入的
 from send_email import send_email
-
+topic = 'tesla'
 # 这个地址 调不同
 # api_key = '890603a55bfa47048e4490069ebee18c'
-# url = 'https://newsapi.org/v2/everything?q=tesla&sortBy=publishedAt' \
-#       '&apiKey=890603a55bfa47048e4490069ebee18c'
+# url = "https://newsapi.org/v2/everything?q=f'{topic}'&sortBy=publishedAt' \
+#       '&apiKey=890603a55bfa47048e4490069ebee18c&language=en"
 #
 # request = requests.get(url)
+# print('request',request)
 
 # 改个思路 模拟 拿到 request 数据
 request = {
@@ -59,10 +60,12 @@ request = {
 content = request
 
 body = ""
-for article in content['articles']:
+# 限制 接收几条
+for article in content['articles'][:2]:
     # 检查不是 None  不然会报错
     if article['title'] is not None:
-        body = body + article['title'] + '\n' + article['content'] + 2 * '\n'
+        body = "Subject: Today's news" + '\n' + body + article['title'] + '\n' + article['content'] + '\n'\
+               + article['url'] + 2 * '\n'
 
 # UTF-8编码来确保字符串中的非ASCII字符能够正确地被处理
 body = body.encode('utf-8')

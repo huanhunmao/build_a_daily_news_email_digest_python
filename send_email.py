@@ -7,7 +7,7 @@ def send_email(message):
 
     username = 'xxx@163.com'
     # 和 js 不一样 不是单独 .env 文件 写在系统 环境变量中  open ~/.zshrc
-    password = 'xxx'
+    password = 'xx'
 
     receiver = 'xxx@163.com'
 
